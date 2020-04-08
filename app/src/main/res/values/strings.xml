@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Dotify</string>
+    <string name="first_avenger">first_avenger</string>
+    <string name="change_user">Change User</string>
+    <string name="image_of_the_album_dark_side_of_the_moon_by_pink_floyd">image of the album dark side of the moon by Pink Floyd</string>
+    <string name="time">Time</string>
+    <string name="pink_floyd_david_gilmour_roger_waters_syd_barrett_richard_wright_nick_mason_bob_klose">Pink Floyd: David Gilmour, Roger Waters, Syd Barrett, Richard Wright, Nick Mason, Bob Klose</string>
+    <string name="previous">previous</string>
+    <string name="play">play</string>
+    <string name="next">next</string>
+</resources>
