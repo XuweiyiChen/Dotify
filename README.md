@@ -8,3 +8,5 @@ respectively (+ .5)
 - Instead of requirement #5, the album cover image must be a perfect 1:1 square size whose width
 matches the screen width and height matches the height as well. (+ 1)
 - Create another xml file that uses the a different ViewGroup type than your original. (+ 1)
+
+![screenshot of running on emulator](/Users/chenxuweiyi/Desktop/info448/Dotify/src/screenshot.png)
