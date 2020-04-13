@@ -11,13 +11,14 @@
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:autofillHints="please enter here"
+        android:inputType="text"
         android:text="@string/first_avenger"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/black"
         app:layout_constraintBaseline_toBaselineOf="@+id/btChangeUser"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:autofillHints="please enter here"
-        android:inputType="text"
         tools:ignore="LabelFor" />
 
     <Button
@@ -34,9 +35,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/image_of_the_album_dark_side_of_the_moon_by_pink_floyd"
+        android:longClickable="true"
         android:src="@drawable/album"
+        app:layout_constraintBottom_toTopOf="@+id/tvSong"
         app:layout_constraintDimensionRatio="1:1"
-        android:scaleType="centerCrop"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btChangeUser" />
@@ -46,7 +48,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/time"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@color/black"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivAlbum" />
@@ -56,31 +59,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="end"
+        android:singleLine="true"
         android:text="@string/pink_floyd_david_gilmour_roger_waters_syd_barrett_richard_wright_nick_mason_bob_klose"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="#000000"
+        android:textColor="@color/black"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSong"
-        android:singleLine="true" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSong" />
 
     <TextView
         android:id="@+id/tvPlayTimes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/black"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/singer"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/singer" />
 
     <ImageButton
         android:id="@+id/btPrevious"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
         android:background="@drawable/previous"
+        android:contentDescription="@string/skip_previous_button"
         android:onClick="skipPrevious"
-        android:text="@string/previous"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btPlay"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPlayTimes" />
 
@@ -88,10 +96,12 @@
         android:id="@+id/btPlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/play_button"
         android:onClick="addPlayTimes"
-        android:text="@string/play"
         android:src="@drawable/play"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btNext"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btPrevious"
         app:layout_constraintTop_toBottomOf="@+id/tvPlayTimes" />
 
@@ -99,11 +109,13 @@
         android:id="@+id/btNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
         android:background="@drawable/next"
+        android:contentDescription="@string/skip_next_button"
         android:onClick="skipNext"
-        android:text="@string/next"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toEndOf="@+id/btPlay"
         app:layout_constraintTop_toBottomOf="@+id/tvPlayTimes" />
 
