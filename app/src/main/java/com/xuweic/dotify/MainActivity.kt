@@ -1,30 +1,48 @@
 package com.xuweic.dotify
 
 import android.annotation.SuppressLint
-import android.graphics.Color
-import android.graphics.Color.*
+import android.graphics.Color.BLACK
+import android.graphics.Color.RED
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.*
-import kotlinx.android.synthetic.main.activity_main.*
+import android.view.View
+import com.ericchee.songdataprovider.Song
 import kotlin.random.Random
 class MainActivity : AppCompatActivity() {
 
-    private val randomNumber = Random.nextInt(0, 999999999)
 
+    private val randomNumber = Random.nextInt(0, 999999999)
+    companion object {
+        const val NAME_KEY = "NAME_KEY"
+        const val ALBUM_KEY = "ALBUM_KEY"
+        const val SONG_KEY = "SONG_KEY"
+    }
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val songName = intent.getStringExtra(SONG_KEY)
+        val albumSrc = intent.getIntExtra(ALBUM_KEY,-1)
+        val singerName = intent.getStringExtra(NAME_KEY)
+
+        //setting random playtimes
         val tvPlayTimes = findViewById<TextView>(R.id.tvPlayTimes)
         tvPlayTimes.text = "$randomNumber plays"
+
+        // need to revise here
         val tvName = findViewById<EditText>(R.id.tvName)
         tvName.isEnabled = false;
         val ivAlbum = findViewById<ImageView>(R.id.ivAlbum)
         val tvSong = findViewById<TextView>(R.id.tvSong)
         val singer = findViewById<TextView>(R.id.singer)
+
+        ivAlbum.setImageResource(albumSrc)
+        tvSong.text = songName
+        singer.text = singerName
+
+
         var toggleColor = true;
         ivAlbum.setOnLongClickListener{
             toggleColor = if (toggleColor) {

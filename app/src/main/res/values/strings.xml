@@ -11,4 +11,7 @@
     <string name="skip_previous_button">skip previous button</string>
     <string name="play_button">play button</string>
     <string name="skip_next_button">skip next button</string>
+    <string name="the_picture_of_song">the picture of song</string>
+    <string name="pink_floyd">Pink Floyd</string>
+    <string name="shuffle">shuffle</string>
 </resources>
