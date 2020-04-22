@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
 import android.view.View
-import com.ericchee.songdataprovider.Song
 import kotlin.random.Random
 class MainActivity : AppCompatActivity() {
 
