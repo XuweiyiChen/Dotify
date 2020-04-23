@@ -15,7 +15,7 @@ import com.ericchee.songdataprovider.Song
 
 class SongAdaptor(listOfSongs: List<Song>, val context: Context): RecyclerView.Adapter<SongAdaptor.SongViewHolder>() {
 
-    private var listOfSongs: List<Song> = listOfSongs.toList()
+    private var listOfSongs: MutableList<Song> = listOfSongs.toList() as MutableList<Song>
 
     lateinit var onSongClickListener: (song: Song) -> Unit
 
@@ -32,7 +32,7 @@ class SongAdaptor(listOfSongs: List<Song>, val context: Context): RecyclerView.A
         holder.bind(listOfSongs[position], position)
     }
 
-    fun change(newSongs: List<Song>) {
+    fun change(newSongs: MutableList<Song>) {
 //        listOfSongs = newSongs
 //        notifyDataSetChanged()
         val callback = SongDiffCallback(listOfSongs, newSongs)
@@ -58,6 +58,7 @@ class SongAdaptor(listOfSongs: List<Song>, val context: Context): RecyclerView.A
 
             itemView.setOnLongClickListener(OnLongClickListener {
                 onSongLongClickListener?.invoke(position)
+                listOfSongs.removeAt(position)
                 notifyItemRemoved(adapterPosition)
                 false
             })

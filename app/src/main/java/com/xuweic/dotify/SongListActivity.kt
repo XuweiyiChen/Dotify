@@ -29,7 +29,7 @@ class SongListActivity : AppCompatActivity() {
 
         this.tvBrief = findViewById(R.id.tvBrief)
 
-        val allSongs: List<Song> = SongDataProvider.getAllSongs()
+        val allSongs: MutableList<Song> = SongDataProvider.getAllSongs() as MutableList<Song>
 
         tvBrief.text = ""
 
@@ -53,7 +53,7 @@ class SongListActivity : AppCompatActivity() {
 
         btShuffle.setOnClickListener {
             val newSongs = allSongs.shuffled()
-            songAdaptor.change(newSongs)
+            songAdaptor.change(newSongs as MutableList<Song>)
         }
 
         line.setOnClickListener {
