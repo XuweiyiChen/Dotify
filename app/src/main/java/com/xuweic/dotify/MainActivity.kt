@@ -7,39 +7,40 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
 import android.view.View
+import com.ericchee.songdataprovider.Song
 import kotlin.random.Random
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var tvName: TextView
+    private lateinit var ivAlbum: ImageView
+    private lateinit var tvSong: TextView
+    private lateinit var singer: TextView
 
     private val randomNumber = Random.nextInt(0, 999999999)
     companion object {
-        const val NAME_KEY = "NAME_KEY"
-        const val ALBUM_KEY = "ALBUM_KEY"
-        const val SONG_KEY = "SONG_KEY"
+        const val NAME_KEY = "KEY"
     }
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val songName = intent.getStringExtra(SONG_KEY)
-        val albumSrc = intent.getIntExtra(ALBUM_KEY,-1)
-        val singerName = intent.getStringExtra(NAME_KEY)
+        val song = intent.getParcelableExtra<Song>(NAME_KEY)
 
         //setting random playtimes
         val tvPlayTimes = findViewById<TextView>(R.id.tvPlayTimes)
         tvPlayTimes.text = "$randomNumber plays"
 
         // need to revise here
-        val tvName = findViewById<EditText>(R.id.tvName)
+        tvName = findViewById<EditText>(R.id.tvName)
         tvName.isEnabled = false;
-        val ivAlbum = findViewById<ImageView>(R.id.ivAlbum)
-        val tvSong = findViewById<TextView>(R.id.tvSong)
-        val singer = findViewById<TextView>(R.id.singer)
+        ivAlbum = findViewById<ImageView>(R.id.ivAlbum)
+        tvSong = findViewById<TextView>(R.id.tvSong)
+        singer = findViewById<TextView>(R.id.singer)
 
-        ivAlbum.setImageResource(albumSrc)
-        tvSong.text = songName
-        singer.text = singerName
+        ivAlbum.setImageResource(song.largeImageID)
+        tvSong.text = song.title
+        singer.text = song.artist
 
 
         var toggleColor = true;

@@ -4,13 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Parcelable
 import android.widget.TextView
-import android.widget.Toast
 import com.ericchee.songdataprovider.Song
 import com.ericchee.songdataprovider.SongDataProvider
 import com.xuweic.dotify.MainActivity.Companion.NAME_KEY
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_recyclerview.*
 import kotlin.properties.Delegates
 
@@ -20,6 +17,7 @@ class SongListActivity : AppCompatActivity() {
     private lateinit var singerName: String
     private lateinit var songName: String
     private var albumAddress by Delegates.notNull<Int>()
+    private var currentSong: Song? = null;
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,17 +32,15 @@ class SongListActivity : AppCompatActivity() {
 
         tvBrief.text = ""
 
-
         val songAdaptor = SongAdaptor(allSongs, this)
 
-
-        songAdaptor.onPersonClickListener = {song ->
+        songAdaptor.onSongClickListener = {song ->
             singerName = song.artist
             songName = song.title
             albumAddress = song.largeImageID
             tvBrief.text = song.artist + " - " + song.title
+            currentSong = song
         }
-
 
         rvSongs.adapter = songAdaptor
 
@@ -54,10 +50,9 @@ class SongListActivity : AppCompatActivity() {
         }
 
         line.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("SONG_KEY", singerName)
-            intent.putExtra("ALBUM_KEY", albumAddress)
-            intent.putExtra("SONG_KEY", songName)
+            val intent = Intent(this, MainActivity::class.java).apply {
+                putExtra(NAME_KEY, currentSong)
+            }
             startActivity(intent)
         }
     }

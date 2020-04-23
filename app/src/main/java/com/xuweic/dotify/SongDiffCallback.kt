@@ -8,6 +8,10 @@ class SongDiffCallback(
     private val newSongs: List<Song>
 ): DiffUtil.Callback() {
 
+    override fun getOldListSize(): Int = previousSongs.size
+
+    override fun getNewListSize(): Int = newSongs.size
+
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
         val previousSong = previousSongs[oldItemPosition]
         val newSong = newSongs[newItemPosition]
@@ -15,18 +19,10 @@ class SongDiffCallback(
         return previousSong.id == newSong.id
     }
 
-    override fun getOldListSize(): Int {
-        TODO("Not yet implemented")
-    }
-
-    override fun getNewListSize(): Int {
-        TODO("Not yet implemented")
-    }
-
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
         val previousSong = previousSongs[oldItemPosition]
         val newSong = newSongs[newItemPosition]
         
-        return previousSong.id == newSong.id
+        return previousSong.artist == newSong.artist
     }
 }
