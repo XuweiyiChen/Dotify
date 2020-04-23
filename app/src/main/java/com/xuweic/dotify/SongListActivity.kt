@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
 import com.ericchee.songdataprovider.Song
 import com.ericchee.songdataprovider.SongDataProvider
 import com.xuweic.dotify.MainActivity.Companion.NAME_KEY
@@ -40,6 +41,12 @@ class SongListActivity : AppCompatActivity() {
             albumAddress = song.largeImageID
             tvBrief.text = song.artist + " - " + song.title
             currentSong = song
+        }
+
+        songAdaptor.onSongLongClickListener = {position ->
+            val songNames = allSongs[position].title
+//            allSongs.drop(position)
+            Toast.makeText(this, "Remove $songNames", Toast.LENGTH_SHORT).show()
         }
 
         rvSongs.adapter = songAdaptor

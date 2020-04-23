@@ -19,6 +19,8 @@ class SongAdaptor(listOfSongs: List<Song>, val context: Context): RecyclerView.A
 
     lateinit var onSongClickListener: (song: Song) -> Unit
 
+    lateinit var onSongLongClickListener: (position: Int) -> Unit
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.source, parent, false)
         return SongViewHolder(view)
@@ -27,13 +29,12 @@ class SongAdaptor(listOfSongs: List<Song>, val context: Context): RecyclerView.A
     override fun getItemCount(): Int = listOfSongs.size
 
     override fun onBindViewHolder(holder: SongViewHolder, position: Int) {
-        holder.bind(listOfSongs[position])
+        holder.bind(listOfSongs[position], position)
     }
 
     fun change(newSongs: List<Song>) {
 //        listOfSongs = newSongs
 //        notifyDataSetChanged()
-
         val callback = SongDiffCallback(listOfSongs, newSongs)
         val diffResult = DiffUtil.calculateDiff(callback)
         diffResult.dispatchUpdatesTo(this)
@@ -46,7 +47,7 @@ class SongAdaptor(listOfSongs: List<Song>, val context: Context): RecyclerView.A
         private val imgAlbum by lazy {itemView.findViewById<ImageView>(R.id.imgHolder)}
 
         @SuppressLint("SetTextI18n")
-        fun bind(song: Song) {
+        fun bind(song: Song, position: Int) {
             nameSinger.text = song.artist
             nameSong.text = song.title
             imgAlbum.setImageResource(song.smallImageID)
@@ -56,7 +57,7 @@ class SongAdaptor(listOfSongs: List<Song>, val context: Context): RecyclerView.A
             }
 
             itemView.setOnLongClickListener(OnLongClickListener {
-                listOfSongs.drop(adapterPosition)
+                onSongLongClickListener?.invoke(position)
                 notifyItemRemoved(adapterPosition)
                 false
             })
