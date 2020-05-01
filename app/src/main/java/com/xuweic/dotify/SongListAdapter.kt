@@ -8,10 +8,10 @@ import android.view.View.OnLongClickListener
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ericchee.songdataprovider.Song
+import com.xuweic.dotify.fragment.SongListFragment
 
 class SongAdaptor(listOfSongs: List<Song>, val context: Context): RecyclerView.Adapter<SongAdaptor.SongViewHolder>() {
 
@@ -33,12 +33,12 @@ class SongAdaptor(listOfSongs: List<Song>, val context: Context): RecyclerView.A
     }
 
     fun change(newSongs: MutableList<Song>) {
-//        listOfSongs = newSongs
-//        notifyDataSetChanged()
-        val callback = SongDiffCallback(listOfSongs, newSongs)
-        val diffResult = DiffUtil.calculateDiff(callback)
-        diffResult.dispatchUpdatesTo(this)
         listOfSongs = newSongs
+        notifyDataSetChanged()
+        //val callback = SongDiffCallback(listOfSongs, newSongs)
+        //val diffResult = DiffUtil.calculateDiff(callback)
+        //diffResult.dispatchUpdatesTo(this)
+        //listOfSongs = newSongs
     }
 
     inner class SongViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {

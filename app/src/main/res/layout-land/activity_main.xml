@@ -4,57 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/normal_padding"
     android:background="#FFFFFF"
+    android:padding="@dimen/normal_padding"
     tools:context=".activity.MainActivity">
 
     <ImageView
         android:id="@+id/ivAlbum"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="248dp"
+        android:layout_height="374dp"
+        android:layout_marginLeft="4dp"
         android:contentDescription="@string/image_of_the_album_dark_side_of_the_moon_by_pink_floyd"
         android:longClickable="true"
         android:src="@drawable/album"
-        app:layout_constraintBottom_toTopOf="@+id/tvSong"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btChangeUser" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="-10dp" />
 
     <TextView
         android:id="@+id/tvSong"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
         android:text="@string/time"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/black"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tvPlayTimes"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintLeft_toRightOf="@+id/ivAlbum"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivAlbum" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/singer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="32dp"
         android:ellipsize="end"
+        android:gravity="center"
         android:singleLine="true"
-        android:text="@string/pink_floyd_david_gilmour_roger_waters_syd_barrett_richard_wright_nick_mason_bob_klose"
+        android:text="@string/pink_floyd"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/black"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toRightOf="@+id/ivAlbum"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivAlbum"
         app:layout_constraintTop_toBottomOf="@+id/tvSong" />
 
     <TextView
         android:id="@+id/tvPlayTimes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_normal"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/black"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/singer"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/singer" />
+        app:layout_constraintLeft_toRightOf="@+id/ivAlbum"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@id/btPlay" />
 
     <ImageButton
         android:id="@+id/btPrevious"
@@ -67,8 +79,9 @@
         app:layout_constraintEnd_toStartOf="@+id/btPlay"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPlayTimes" />
+        app:layout_constraintStart_toEndOf="@+id/ivAlbum"
+        app:layout_constraintTop_toBottomOf="@+id/tvPlayTimes"
+        app:layout_constraintVertical_bias="0.522" />
 
     <ImageButton
         android:id="@+id/btPlay"
@@ -81,7 +94,8 @@
         app:layout_constraintEnd_toStartOf="@+id/btNext"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toEndOf="@+id/btPrevious"
-        app:layout_constraintTop_toBottomOf="@+id/tvPlayTimes" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPlayTimes"
+        app:layout_constraintVertical_bias="0.855" />
 
     <ImageButton
         android:id="@+id/btNext"
@@ -95,6 +109,7 @@
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toEndOf="@+id/btPlay"
-        app:layout_constraintTop_toBottomOf="@+id/tvPlayTimes" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPlayTimes"
+        app:layout_constraintVertical_bias="0.514" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

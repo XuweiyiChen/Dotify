@@ -1,14 +1,13 @@
-package com.xuweic.dotify
+package com.xuweic.dotify.activity
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import android.widget.Toast
 import com.ericchee.songdataprovider.Song
 import com.ericchee.songdataprovider.SongDataProvider
-import com.xuweic.dotify.MainActivity.Companion.NAME_KEY
+import com.xuweic.dotify.R
+import com.xuweic.dotify.SongAdaptor
 import kotlinx.android.synthetic.main.activity_recyclerview.*
 import kotlin.properties.Delegates
 
@@ -33,7 +32,7 @@ class SongListActivity : AppCompatActivity() {
 
         tvBrief.text = ""
 
-        val songAdaptor = SongAdaptor(allSongs, this)
+        val songAdaptor = SongAdaptor(allSongs,this)
 
         songAdaptor.onSongClickListener = {song ->
             singerName = song.artist
@@ -46,22 +45,21 @@ class SongListActivity : AppCompatActivity() {
         songAdaptor.onSongLongClickListener = {position ->
             val songNames = allSongs[position].title
 //            allSongs.drop(position)
-            Toast.makeText(this, "Remove $songNames", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "Remove $songNames", Toast.LENGTH_SHORT).show()
         }
 
         rvSongs.adapter = songAdaptor
 
-        btShuffle.setOnClickListener {
-            val newSongs = allSongs.shuffled()
-            songAdaptor.change(newSongs as MutableList<Song>)
-        }
+//        btShuffle.setOnClickListener {
+//            val newSongs = allSongs.shuffled()
+//            songAdaptor.change(newSongs as MutableList<Song>)
+//        }
 
-        line.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java).apply {
-                putExtra(NAME_KEY, currentSong)
-            }
-            startActivity(intent)
-        }
+//        line.setOnClickListener {
+////            val intent = Intent(this, MainActivity::class.java).apply {
+////                putExtra(NAME_KEY, currentSong)
+////            }
+//            startActivity(intent) }
     }
 
 }

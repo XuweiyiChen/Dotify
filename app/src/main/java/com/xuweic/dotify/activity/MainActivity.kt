@@ -1,4 +1,4 @@
-package com.xuweic.dotify
+package com.xuweic.dotify.activity
 
 import android.annotation.SuppressLint
 import android.graphics.Color.BLACK
@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.widget.*
 import android.view.View
 import com.ericchee.songdataprovider.Song
+import com.xuweic.dotify.R
 import kotlin.random.Random
 class MainActivity : AppCompatActivity() {
 

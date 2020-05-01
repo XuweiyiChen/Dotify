@@ -14,4 +14,7 @@
     <string name="the_picture_of_song">the picture of song</string>
     <string name="pink_floyd">Pink Floyd</string>
     <string name="shuffle">shuffle</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
